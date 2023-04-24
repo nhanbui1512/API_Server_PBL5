@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const port = 3000;
 const app = express();
+const route = require('./routes');
 
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '/public')));
@@ -11,10 +12,7 @@ app.use(
         extended: true,
     }),
 );
-
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
+route(app);
 
 app.listen(port, () => {
     console.log(`Listening at localhost:${port}`);
