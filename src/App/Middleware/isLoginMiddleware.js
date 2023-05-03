@@ -8,9 +8,9 @@ const isLoginMiddleWare = (req, response, next) => {
         const token = authHeader.split(' ')[1];
         try {
             var decode = jwt.verify(token, process.env.JWT_PASS);
-            req.IDUser = decode.IDUser;
-            req.access = decode.access;
-            req.user_name = decode.user_name;
+            req.body.idUser = decode.idUser;
+            req.body.access = decode.access;
+            req.body.email = decode.email;
             next();
         } catch (error) {
             console.log(error);

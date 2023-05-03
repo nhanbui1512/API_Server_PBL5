@@ -1,9 +1,8 @@
-class loginController { 
 
-    //GET /news
-    login(req, res){
-        res.send('hello')
-    }
+const userModel = require('../Models/userModel')
+
+
+class loginController { 
     
 }
 module.exports = new loginController;

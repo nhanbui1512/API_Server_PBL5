@@ -12,7 +12,7 @@ const User = function (user) {
 User.checkLogin = ({ email, password }) => {
     return new Promise((resolve, reject) => {
         db.query(
-            `SELECT idUser, email, old, phoneNumber, carNumberPlates from user WHERE email = '${email}' and password ='${password}'`,
+            `SELECT idUser, email, old, phoneNumber, carNumberPlates,access from user WHERE email = '${email}' and password ='${password}'`,
             (err, res) => {
                 if (err) {
                     reject(err);
