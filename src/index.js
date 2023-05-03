@@ -5,14 +5,14 @@ const app = express();
 const cors = require('cors');
 const route = require('./routes');
 
-const db = require('./Config/Db')
+const db = require('./Config/Db');
 
-
+const hbs = require('express-handlebars');
 
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '/public')));
 
-db.connect
+db.connect;
 
 app.use(cors());
 
@@ -21,6 +21,16 @@ app.use(
         extended: true,
     }),
 );
+
+app.engine(
+    'hbs',
+    hbs.engine({
+        extname: '.hbs',
+    }),
+);
+app.set('view engine', 'hbs');
+app.set('views', path.join(__dirname, 'Resource/views'));
+
 route(app);
 
 app.listen(port, () => {

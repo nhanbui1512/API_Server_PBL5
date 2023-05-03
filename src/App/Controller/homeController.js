@@ -1,9 +1,7 @@
-class homeController { 
-
+class homeController {
     //GET /news
-    index(req, res){
-        res.send('hello')
+    index(req, res) {
+        res.render('home.hbs', { layout: false });
     }
-    
 }
-module.exports = new homeController;
+module.exports = new homeController();
