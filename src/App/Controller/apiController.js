@@ -19,6 +19,9 @@ class apiController {
                 if (res.result) {
                     const user = res.user
                     const token = token_require.GenerateAccpectToken({idUser: user.idUser, access: user.access, email: user.email})
+                    req.session.idUser = user.idUser
+                    req.session.access = user.access
+        
                     response.status(200).json({ result: true, user, token });
                 } else {
                     response.status(401).json({ result: false, message: 'not found user' });

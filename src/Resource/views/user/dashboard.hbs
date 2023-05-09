@@ -1,8 +1,8 @@
 <div class="row page-titles mx-0">
     <div class="col p-md-0">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="/admin">Dashboard</a></li>
-            <li class="breadcrumb-item active"><a href="/admin/danhsachdoanhnghiep">Danh Sách Doanh Nghiệp</a></li>
+            <li class="breadcrumb-item"><a href="/user">Dashboard</a></li>
+            <li class="breadcrumb-item active"><a href="">Danh Sách Cảnh Báo</a></li>
         </ol>
     </div>
 </div>
@@ -11,45 +11,30 @@
 
 <div class="col">
 
-    <form action="/admin/searchbusiness" method="post" class="input-group mb-3">
-        <input name="searchinput" type="text" class="form-control" placeholder="Tên Doanh Nghiệp">
-        <div class="input-group-append">
-            <button class="btn btn-outline-dark" type="submit">Search</button>
-        </div>
-    </form>
-
-
     <div class="card">
-        <a id="addbtn" href="/admin/themdoanhnghiep"><i class="fa-solid fa-plus"> Add</i></a>
         <div class="card-body">
-            <h4 class="card-title">Danh Sách Doanh Nghiệp</h4>
+            <h4 class="card-title">Danh Sách Cảnh Báo</h4>
             <div class="table-responsive">
                 <table class="table header-border">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Tên Doanh Nghiệp</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Loại Hình Kinh Doanh</th>
-                            <th scope="col">Địa Chỉ</th>
-                            <th scope="col">Số Điện Thoại</th>
+                            <th scope="col">Tên Cảnh Báo</th>
+                            <th scope="col">Thời gian</th>
                             <th style="text-align:center ;" scope="col">Action</th>
 
                         </tr>
                     </thead>
                     <tbody>
-                        {{!-- {{#each data}}
+                        {{#each data}}
                             <tr>
-                                <th>{{this.index}}</th>
-                                <td><a href="/admin/doanhnghiep/{{this._id}}">{{this.UserName}}</a></td>
-                                <td>{{this.Email}}</td>
-                                <td>{{this.LoaiHinhKinhDoanh}}</td>
-                                <td>{{this.Address}}</td>
-                                <td>{{this.PhoneNumber}}</td>
+                                <th>{{this.idWarning}}</th>
+                                <td>Cảnh báo buồn ngủ</td>
+                                <td>{{this.createAt}}</td>
                                 <td style="text-align: center;"><span><a href="/admin/doanhnghiep/{{this._id}}" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted m-r-5"></i> </a><a onclick="return confirm('Are you sure?')" href="/admin/deletebusiness?ID={{this._id}}" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-close color-danger"></i></a></span>
                                 </td>
                             </tr>
-                        {{/each}} --}}
+                        {{/each}}
                         
 
                         

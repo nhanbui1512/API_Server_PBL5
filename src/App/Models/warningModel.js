@@ -21,4 +21,20 @@ Warning.createWarning = ({ idUser }) => {
     })
 };
 
+
+Warning.getWarningByIdUser = ({idUser}) => {
+    return new Promise((resolve,reject)=>{
+
+        db.query(`SELECT * FROM warning WHERE idUser = ${idUser}`, (err,res) =>{
+            if(err){
+                reject(err)
+            }
+            else{
+                resolve(res)
+            }
+        })
+    })
+
+}
+
 module.exports = Warning;

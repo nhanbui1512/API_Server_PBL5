@@ -28,4 +28,26 @@ User.checkLogin = ({ email, password }) => {
     });
 };
 
+User.getProfile = ({idUser}) =>{
+
+    return new Promise((resolve, reject) =>{
+        db.query(`SELECT * FROM user WHERE idUser = ${idUser}`, 
+        (err,res) =>{
+            if(err){
+                reject(err)
+            }
+            else{
+                resolve(res)
+            }
+        })
+    })
+}
+
+
+User.changeProfile = ({idUser,old, cartNumberPlates, phoneNumber}) =>{
+    return new Promise((resolve, reject) =>{
+        db.query(``)
+    })
+}
+
 module.exports = User;

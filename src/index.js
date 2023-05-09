@@ -4,10 +4,21 @@ const port = 3000;
 const app = express();
 const cors = require('cors');
 const route = require('./routes');
-
+const session = require('express-session');
+const cookieParser = require('cookie-parser');
 const db = require('./Config/Db');
 
 const hbs = require('express-handlebars');
+
+
+
+app.use(cookieParser())
+app.use(session({
+  secret: 'secret-key',
+  resave: false,
+  saveUninitialized: false,
+  
+}))
 
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '/public')));
