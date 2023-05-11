@@ -1,11 +1,14 @@
 const userController = require('../App/Controller/userController')
-const userMiddleware = require('../App/Middleware/userMiddleware')
-
 
 const express = require('express');
 const router = express.Router();
 
-router.get('/' , userMiddleware, userController.index)
+router.get('/' , userController.index)
 router.get('/profile',userController.profile)
+router.get('/password',userController.passwordPage)
+router.get('/logout',userController.logOut)
+
+router.post('/changeprofile',userController.changeProfile)
+router.post('/changepassword',userController.changePassword)
 
 module.exports = router;

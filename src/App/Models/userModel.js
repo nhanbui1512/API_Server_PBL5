@@ -9,6 +9,23 @@ const User = function (user) {
     this.cartNumberPlates = user.cartNumberPlates;
 };
 
+User.findById = ({idUser})=>{
+
+    return new Promise((resolve, reject) =>{
+        db.query(`SELECT * FROM user WHERE idUser = ${idUser}`, 
+            (err,res) =>{
+                if(err){
+                    reject(err)
+                }
+                else{
+                    resolve(res)
+                }
+            }
+        )
+    })
+
+}
+
 User.checkLogin = ({ email, password }) => {
     return new Promise((resolve, reject) => {
         db.query(
@@ -44,10 +61,35 @@ User.getProfile = ({idUser}) =>{
 }
 
 
-User.changeProfile = ({idUser,old, cartNumberPlates, phoneNumber}) =>{
+User.changeProfile = ({idUser,old, carNumberPlates, phoneNumber}) =>{
     return new Promise((resolve, reject) =>{
-        db.query(``)
+        db.query(`UPDATE user SET old = ${old}, carNumberPlates = '${carNumberPlates}', phoneNumber = '${phoneNumber}' WHERE idUser = ${idUser}`
+            ,(err,res)=>{
+                if(err){
+                    reject(err)
+                }
+                else{
+                    resolve(res)
+                }
+            }
+        )
     })
+}
+
+User.changePassword = ({idUser, newPassword})=>{
+    return new Promise((resolve,reject) =>{
+        db.query(`UPDATE user SET password = '${newPassword}' WHERE idUser = ${idUser}`, 
+            (err,res)=>{
+                if(err){
+                    reject(err)
+                }
+                else{
+                    resolve(res)
+                }
+            }
+        )
+    })
+
 }
 
 module.exports = User;
