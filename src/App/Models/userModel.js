@@ -92,4 +92,35 @@ User.changePassword = ({idUser, newPassword})=>{
 
 }
 
+User.findByEmail = ({email}) =>{
+    return new Promise((resolve, reject) =>{
+        db.query(`SELECT * FROM user WHERE email = '${email}'`, (err,res) =>{
+            if(err)
+            {
+                reject(err)
+            }
+            else{
+                resolve(res)
+            }
+        })
+    })
+
+}
+
+
+User.addUser = ({email, password, phoneNumber, carNumberPlates, old, }) =>{
+    return new Promise((resolve, reject) =>{
+        db.query(`INSERT INTO user (email, password, phoneNumber, carNumberPlates, old, access) VALUES ('${email}' , '${password}' , '${phoneNumber}', '${carNumberPlates}', ${old}, 0 )`,
+            (err,res) =>{
+                if(err){
+                    reject(err)
+                }
+                else{
+                    resolve(res)
+                }
+            }
+        )   
+    })
+}
+
 module.exports = User;
