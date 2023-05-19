@@ -23,6 +23,8 @@ const fileFilter = (req, file, cb) => {
 };
 const upload = multer({ storage: storage, fileFilter: fileFilter });
 
+router.get('/getwarningbytime',isLoginMiddleWare,apiController.getWarningByTime)
+
 router.post('/uploadfile', upload.single('video'), apiController.uploadFile);
 router.post('/login',apiController.login)
 router.post('/sendwarning',isLoginMiddleWare, apiController.sendWarning)

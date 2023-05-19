@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Biểu đồ</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <canvas id="myChart"></canvas>
+
+  <script>
+    // Tạo dữ liệu biểu đồ
+    var data = {
+      labels: ['0', '1', '2', '3', '4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24',],
+      datasets: [{
+        label: 'Lần cảnh báo',
+        data: [0, 0, 0, 0, 0,3,0,0,2,0,0,1,0,0,0,0,0,0,0,0,0,0,6,0,0],
+        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+        borderColor: 'rgba(75, 192, 192, 1)',
+        borderWidth: 1
+      }]
+    };
+
+    // Cấu hình biểu đồ
+    var options = {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      },
+
+    };
+
+    // Lấy thẻ canvas và vẽ biểu đồ
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+      type: 'bar',
+      data: data,
+      options: options
+    });
+  </script>
+</body>
+</html>

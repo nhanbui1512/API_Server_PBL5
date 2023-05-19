@@ -25,7 +25,7 @@ Warning.createWarning = ({ idUser }) => {
 Warning.getWarningByIdUser = ({idUser}) => {
     return new Promise((resolve,reject)=>{
 
-        db.query(`SELECT * FROM warning WHERE idUser = ${idUser}`, (err,res) =>{
+        db.query(`SELECT * FROM warning WHERE idUser = ${idUser} ORDER BY CreateAt DESC `, (err,res) =>{
             if(err){
                 reject(err)
             }
@@ -35,6 +35,19 @@ Warning.getWarningByIdUser = ({idUser}) => {
         })
     })
 
+}
+
+Warning.getWarningByTime = ({day,month, year,idUser}) =>{
+    return new Promise((resolve, reject) =>{
+        db.query(`SELECT * FROM warning WHERE idUser = ${idUser} AND DATE(createAt) = '${year}-${month}-${day}'`, (err,res) =>{
+            if(err){
+                reject(err)
+            }
+            else{
+                resolve(res)
+            }
+        })
+    })
 }
 
 module.exports = Warning;

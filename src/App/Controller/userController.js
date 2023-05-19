@@ -9,11 +9,23 @@ class userController {
 
         warningModel.getWarningByIdUser({idUser})
             .then(res=>{
+                res.map((item) =>{
+                    const date = new Date(item.createAt);
+                    const year = date.getFullYear();
+                    const month = String(date.getMonth() + 1).padStart(2, '0');
+                    const day = String(date.getDate()).padStart(2, '0');
+                    const hours = String(date.getHours()).padStart(2, '0');
+                    const minutes = String(date.getMinutes()).padStart(2, '0');
+                    const seconds = String(date.getSeconds()).padStart(2, '0');
+
+                    const formattedDate = `${day}-${month}-${year} ${hours}:${minutes}:${seconds}`;
+                    item.createAt = formattedDate
+                })
                 response.render('user/dashboard.hbs', { layout: 'userLayout.hbs', data: res});
             })
             .catch(err=>{
                 console.log(err)
-                response.send('serer is ')
+                response.send('serer is error')
             })
 
        
@@ -90,6 +102,11 @@ class userController {
                 console.log(err)
                 response.status(401).json({result: false})
             })
+    }
+
+    statisticDay(req,response)
+    {
+        response.render('user/chart.hbs', {layout: 'userLayout.hbs'})
     }
 
     logOut(req,response){
